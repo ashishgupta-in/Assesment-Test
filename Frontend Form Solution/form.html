@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="google-signin-client_id"
+        content="509256661567-qcpqq018f9o57b1mjvrr1dduiu1rr4cb.apps.googleusercontent.com">
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Google library -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script>
+        function call() {
+            var first_name = document.getElementById("first_name").value;
+            var last_name = document.getElementById("last_name").value;
+            var email_input = document.getElementById("email_input").value;
+            var password_input = document.getElementById("password_input").value;
+            if (first_name == "" || last_name == "" || email_input == "" || password_input == "") {
+                return;
+            }
+            else {
+                document.getElementById("b").innerHTML = "Success";
+            }
+        }
+        function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+            console.log('Name: ' + profile.getName());
+            console.log('Image URL: ' + profile.getImageUrl());
+            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+            document.getElementById("b").innerHTML = "Success";
+        }
+        function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+                console.log('User signed out.');
+            });
+            document.getElementById("first_name").value = "";
+            document.getElementById("last_name").value = "";
+            document.getElementById("email_input").value = "";
+            document.getElementById("password_input").value = "";
+            document.getElementById("b").innerHTML = "Sign Up";
+        }
+    </script>
+</head>
+
+<body>
+    <div class="login-div">
+        <div class="row center-align">
+            <h><b>Sign Up</b></h>
+        </div>
+        <div class="row center-align">
+            <h5>Create your account</h5>
+            <p1>Lorem ipsum dolor sit amet consectetur, adipisicing.</p1>
+        </div>
+        <div class="row">
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="first_name" type="text" class="validate">
+                <label for="first_name">First Name</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="last_name" type="text" class="validate">
+                <label for="last_name">Last Name</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="email_input" type="email" class="validate">
+                <label for="email_input">Email</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="password_input" type="password" class="validate">
+                <label for="password_input">Password</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">By clicking Sign Up, you agree to our <a href="#"><b>Terms of Use </b></a>and our <a
+                    href="#"><b>Privacy Policy.</b></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="row">
+                <div class="col s6 align"><a id="b" onclick=call() class="waves-effect waves-light btn">Sign Up</a>
+                </div>
+                <div class="right-align"><a onclick=signOut() class="waves-effect waves-light btn">Sign Out</a></div>
+            </div>
+
+        </div>
+</body>
+
+</html>
