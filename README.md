@@ -23,9 +23,10 @@ Output: No
 # 2. Front End Sign Up Form with Google API Integration
 
 The materialize front-end framework has been used for the layout, available on https://materializecss.com/  
+  
 On the Google API Console a demo project and web credentials has been created for implementing google sign-in function and getting the user credentials.  
-The google sign-in and sign-out has been added to the form.  
-Also, the basic sign-up and sign-out has been added to the form.  
+  
+The google sign-in and sign-out has been added to the form, along with the basic sign-up and sign-out has been added to the form.  
   
 One has to create a local web server running on port 8000 (as http://localhost:800 has been added for the authorized URI of the web application on the google console).  
-Simple way to do through Command Prompt : python -m http.server 8000  
+Simple way to do is through Command Prompt : python -m http.server 8000  
